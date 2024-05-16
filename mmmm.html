@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DJELASSEM MATHURIN</title>
+</head>
+<style>
+    .body {background-image: url(image/main.jpg);}
+    body {font-family: Arial, sans-serif;margin: 0;padding: 0;display: flex;flex-direction: column;}
+    header {background-color: #333;color: #fff;padding: 40px;text-align: center;}
+    .logo {max-width: 100px;margin-right: 20px;}
+    nav {background-color: #f4f4f4;padding: 30px;text-align: center;}
+    nav select,
+    nav button {font-size: 16px;margin: 5px;padding: 10px;}
+    main {display: flex;}
+    .content {flex: 1;padding: 60px;}
+    .image-slider {flex: 1;display: flex;flex-direction: column;align-items: center;padding: 20px;}
+    .slider-image {max-width: 100%;height: auto;margin-bottom: 50px; max-height: 320px;}
+    footer {background-color: #333;color: #fff;padding: 10px;text-align: center;}
+</style>
+<body class="body">
+    <header>
+        <h1>DJELASSEM MATHURIN</h1>
+    </header>
+    <nav>
+        <select id="rowSelect">
+            <option value="1">Accueil</option>
+            <option value="2">À propos</option>
+            <option value="3">Formation</option>
+            <option value="4">Récompenses/experiences</option>
+            <option value="5">Projets</option>
+            <option value="6">Contact</option>
+        </select>
+        <button onclick="showContent()">Afficher le contenu</button>
+    </nav>
+        <main>
+        <div id="imageSlider" class="image-slider">
+            <img src="image/Photoshop.png" alt="Image 1" class="slider-image">
+        </div>
+        <div id="content" class="content">
+            <h2>Contenu</h2>
+            <div id="contentDisplay"></div>
+        </div>
+    </main>
+    <script>
+        function showContent() {
+            const rowSelect = document.getElementById('rowSelect');
+            const selectedRow = rowSelect.value;
+            const contentDisplay = document.getElementById('contentDisplay');
+            const imageSlider = document.getElementById('imageSlider');
+            const contentByRow = {
+                1: {content: "<h2>Bienvenue sur mon portfolio</h2><p>Je suis Djelassem Mathurin, un Informaticien Dynamique et assidu au travail, avec une curiosité insatiable, un esprit d’analyse qui surpasse le goût du chiffre, rigoureux et soucieux du détail. Passionné par la technologie, je suis également un professionnel avec une excellente capacité de leadership et de communication. Je suis passionné par le monde numérique et je suis toujours à la recherche de nouveaux défis.</p>", image: "Photoshop.png"},
+                2: {content: "<h2>À propos de moi</h2><p>Djelassem Mathurin, à seulement 20 ans, incarne une passion ardente pour l'informatique qui illumine son chemin depuis ses premiers pas dans le monde de la technologie. Pour lui, les lignes de code ne sont pas seulement des caractères sur un écran, mais plutôt des notes dans une symphonie infinie de possibilités. Son histoire est celle d'un jeune homme dont l'esprit curieux et avide a été captivé par les mystères de la programmation dès son plus jeune âge. À mesure qu'il grandissait, sa passion pour l'informatique ne faisait que croître. Il explorait de nouveaux langages de programmation, résolvait des problèmes complexes et créait des projets innovants. Pour lui, chaque bug était une énigme à résoudre, chaque algorithme un défi à relever. Son esprit était constamment en ébullition, cherchant toujours à repousser les limites de ses connaissances et de ses compétences. Lorsque vint le moment de choisir une carrière, il n'y avait aucun doute dans l'esprit de Djelassem. L'informatique était sa voie, sa passion dévorante qui le guidait vers l'avenir. Il s'inscrivit donc à l'université, avide d'apprendre et de se perfectionner dans son domaine de prédilection. À l'université, Djelassem se distingua rapidement par son talent et sa détermination. Il absorbait les connaissances comme une éponge, participant activement aux cours, aux projets de groupe et aux compétitions de programmation. Pour lui, chaque ligne de code écrite était une étape de plus vers l'excellence, un moyen de donner vie à ses idées les plus audacieuses. Mais ce qui distinguait vraiment Djelassem, c'était sa passion inébranlable pour l'informatique. Pour lui, ce n'était pas seulement un domaine d'études ou une carrière, c'était une véritable vocation, un mode de vie. Même en dehors des salles de classe, il passait son temps à expérimenter, à explorer de nouveaux concepts et à collaborer avec d'autres passionnés. Aujourd'hui, Djelassem Mathurin est bien plus qu'un simple informaticien. Il est un visionnaire, un innovateur, un pionnier de la technologie. Sa passion pour l'informatique l'a conduit à repousser les frontières de ce qui est possible, à créer des solutions qui changent le monde et à inspirer ceux qui l'entourent à poursuivre leurs rêves avec détermination et conviction. Et même alors qu'il continue son parcours à l'université, une chose est certaine : pour Djelassem, l'informatique ne sera jamais simplement un métier, mais toujours une passion qui le guide vers des sommets toujours plus élevés.</p>", image: "mno.jpg"},
+                3: {content: "<h2>Formation</h2><ul><li>2012-2013 Certificat d’études primaire et élémentaire, Ecole primaire de DOKAB Moundou/Tchad</li><li>2016-2017 Brevet de l’enseignement fondamental, Collège d’enseignement général de GUELKOL Moundou/Tchad</li><li>2019-2020 Baccalauréat série D, Lycée collège source de développement Moundou/Tchad</li><li>2021 à aujourd'hui Licence en Informatique, Université de N'Gaoundéré</li></ul>", image: "mmm.jpg"},
+                4: {content: "<h2>Récompenses</h2><ul><li>Certificat sur les fondamentaux de la gestion de projet</li><li>Certificat de l’enquêtes sur l’exploitation, les abus et l’harcèlements sexuels (SEAH)</li><li>Certificat sur les fondements de l’action humanitaire</li><li>Certificat sur l’introduction à la gestion des ressources humaines dans les contextes humanitaires</li><li>Certificat sur introduction à l’eau, l’hygiène et l’assainissement dans les situations d’urgence (WASH)</li><li>Certificat sur les compétences émotionnelles du manager</li></ul>", image: "mm.jpg"},
+                5: {content: "<h2>Projets</h2><p>Projets réalisés :</p><ul><li>Analyse et Conception d’un système de gestion et de réservation d’un hôtel et de stock d’un super marché</li><li>Création d’un site web d’inscription en ligne d’une université</li><li>Création d’un projet de site web d’archivage des notes des étudiants, de bibliothèque Matheus-tech et gestion de commande</li><li>Réalisation d’un projet d’ascenseur en C++</li><li>Création d’une application Tic Tac Toe</li></ul>", image: "mn.jpg"},
+                6: {content: "<h2>Contact</h2><p>djelassemmathurin6@gmail.com</p><form action='traitement.php' method='POST'><label for='email'>Adresse e-mail :</label><input type='email' id='email' name='email' required><br><br><label for='tel'>Numéro de téléphone :</label><input type='tel' id='tel' name='tel' required><br><br><label for='message'>Message :</label><br><textarea id='message' name='message' rows='4' cols='50' required></textarea><br><br><input type='submit' value='Envoyer'></form><br></p>", image: "mm.jpg"}
+            };
+            const content = contentByRow[selectedRow];
+            if (content) {
+                contentDisplay.innerHTML = content.content;
+                imageSlider.innerHTML = `<img src="${content.image}" alt="Image ${selectedRow}" class="slider-image">`;
+            }
+        }
+    </script>
+ <footer>
+        <p>&copy; 2024 Djelassem Mathurin</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
